@@ -15,7 +15,7 @@ import { useEffect } from "react";
 
   return [todoList, setTodoList];
 }*/
-
+const API_ENDPOINT = 0;
 const App = () => {
   // const savedList = JSON.parse(localStorage.getItem("savedTodoList"));
   // const [todoList, setTodoList] = useSemiPersistentState();
@@ -24,20 +24,20 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    new Promise(function (resolve, reject) {
-      setTimeout(
-        () =>
-          resolve({
-            data: {
-              todo: JSON.parse(localStorage.getItem("savedTodoList") || "[]"),
-            },
-          }),
-        2000
-      );
-    }).then((result) => {
-      setTodoList(result.data.todo);
-      setIsLoading(false);
-    });
+    fetch(
+      `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((result) => {
+        setTodoList(result.records);
+        setIsLoading(false);
+      });
   });
 
   useEffect(() => {
