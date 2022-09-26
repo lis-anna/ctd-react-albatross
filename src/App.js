@@ -1,20 +1,10 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
 import { useState } from "react";
 import { useEffect } from "react";
 
-/*function useSemiPersistentState() {
-  const [todoList, setTodoList] = useState(
-    JSON.parse(localStorage.getItem("savedTodoList") || "[]")
-  );
-
-  useEffect(() => {
-    localStorage.setItem("savedTodoList", JSON.stringify(todoList));
-  }, [todoList]);
-
-  return [todoList, setTodoList];
-}*/
 const API_ENDPOINT = 0;
 const App = () => {
   // const savedList = JSON.parse(localStorage.getItem("savedTodoList"));
@@ -61,12 +51,23 @@ const App = () => {
 
   //console.log(savedList);
   return (
-    <>
-      <h1>Todo List</h1>
-      <AddTodoForm onAddTodo={addTodo} />
-      <p>{isLoading ? "Loading..." : ""} </p>
-      <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
-    </>
+    <Router>
+      <Routes>
+        <Route
+          path="/"
+          exact
+          element={
+            <>
+              <h1>Todo List</h1>
+              <AddTodoForm onAddTodo={addTodo} />
+              <p>{isLoading ? "Loading..." : ""} </p>
+              <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+            </>
+          }
+        ></Route>
+        <Route exact path="/new" element={<h1> New Todo List</h1>}></Route>
+      </Routes>
+    </Router>
   );
 };
 
