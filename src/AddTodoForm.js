@@ -1,5 +1,6 @@
 import { useState } from "react";
 import InputWithLabel from "./InputWithLabel";
+import style from "./TodoForm.module.css";
 
 const AddTodoForm = ({ onAddTodo }) => {
   const [todoTitle, setTodoTitle] = useState("");
@@ -11,21 +12,26 @@ const AddTodoForm = ({ onAddTodo }) => {
 
   function handleAddTodo(event) {
     event.preventDefault();
-    //const todoTitle = event.target.title.value;
-    onAddTodo({ title: todoTitle, id: Date.now() });
+    const todoTitle = event.target.title.value;
+    //save an item without ID, because ID will be assigned by airtable when writing to table
+    onAddTodo({ fields: { Title: todoTitle } });
     setTodoTitle("");
   }
 
   return (
-    <form onSubmit={handleAddTodo}>
-      <InputWithLabel
-        todoTitle={todoTitle}
-        handleTitleChange={handleTitleChange}
-      >
-        Title
-      </InputWithLabel>
-      <button type="submit">Add</button>
-    </form>
+    <div>
+      <form class={style.ToDoFormContainer} onSubmit={handleAddTodo}>
+        <InputWithLabel
+          todoTitle={todoTitle}
+          handleTitleChange={handleTitleChange}
+        >
+          Title
+        </InputWithLabel>
+        <button className={style.submitButton} type="submit">
+          Add
+        </button>
+      </form>
+    </div>
   );
 };
 export default AddTodoForm;
