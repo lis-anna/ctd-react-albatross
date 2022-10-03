@@ -1,0 +1,60 @@
+.ListItem {
+  color: black;
+  list-style: none;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 0px;
+  margin-left: 10px;
+  margin-bottom: 1em;
+  padding: 10px;
+  background-color: whitesmoke;
+  border: none;
+  border-radius: 5px;
+}
+
+.removeButton {
+  background-color: indianred;
+  color: aliceblue;
+  border: none;
+  border-radius: 5px;
+
+  display: flex;
+  align-items: center;
+  height: 38px;
+  padding: 0 12px 0 px 8px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.btn_part {
+  margin-right: 5px;
+}
+.ItemsList {
+}
+.link:hover {
+  background-color: salmon;
+  padding: 7px 10px 7px 0px;
+
+  opacity: 70%;
+  border-radius: 5px;
+}
+.checkboxItem {
+  width: 20px;
+  height: 20px;
+}
+.checkboxItem:hover {
+  border-color: blueviolet;
+}
+
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+  position: relative;
+  padding-left: 1.5em;
+  /* font-size: 1.05em;*/
+  line-height: 1.5;
+}
+[type="checkbox"]:checked + label {
+  text-decoration: line-through;
+  color: dimgrey;
+}

@@ -1,0 +1,28 @@
+.TodoContainer {
+  align-items: center;
+}
+body {
+  font-family: "Inter", sans-serif;
+  font-weight: lighter;
+  max-width: 960px;
+  min-width: 320px;
+  margin: auto;
+  background-image: url("/ctd-react-albatross/img/canvas-background.001.jpeg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+
+  text-align: center;
+}
+/*Put header to center and change color*/
+.title {
+  color: teal;
+  text-align: center;
+}
+.ToDoFormContainer {
+  display: inline-block;
+}
+/*Submit button style*/
+.submitButton {
+  background-color: mediumseagreen;
+}
