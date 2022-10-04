@@ -1,13 +1,10 @@
-.TodoContainer {
-  align-items: center;
-}
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Comic Sans MS", sans-serif;
   font-weight: lighter;
   max-width: 960px;
   min-width: 320px;
   margin: auto;
-  background-image: url("/ctd-react-albatross/img/canvas-background.001.jpeg");
+  background-image: url("/src/components/img/canvas-background.001.jpeg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -25,4 +22,5 @@ body {
 /*Submit button style*/
 .submitButton {
   background-color: mediumseagreen;
+  font-family: "Comic Sans MS", sans-serif;
 }

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import PropTypes from "prop-types";
 
 const InputWithLabel = (props) => {
   const inputRef = React.useRef();
@@ -21,5 +22,8 @@ const InputWithLabel = (props) => {
       ></input>
     </>
   );
+};
+InputWithLabel.propTypes = {
+  onAddTodo: PropTypes.func,
 };
 export default InputWithLabel;

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import InputWithLabel from "./InputWithLabel";
 import style from "./TodoForm.module.css";
+import PropTypes from "prop-types";
 
 const AddTodoForm = ({ onAddTodo }) => {
   const [todoTitle, setTodoTitle] = useState("");
@@ -20,7 +21,7 @@ const AddTodoForm = ({ onAddTodo }) => {
 
   return (
     <div>
-      <form class={style.ToDoFormContainer} onSubmit={handleAddTodo}>
+      <form onSubmit={handleAddTodo}>
         <InputWithLabel
           todoTitle={todoTitle}
           handleTitleChange={handleTitleChange}
@@ -33,5 +34,8 @@ const AddTodoForm = ({ onAddTodo }) => {
       </form>
     </div>
   );
+};
+AddTodoForm.propTypes = {
+  onAddTodo: PropTypes.func,
 };
 export default AddTodoForm;

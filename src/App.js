@@ -1,10 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import TodoList from "./TodoList";
-import AddTodoForm from "./AddTodoForm";
+import TodoList from "./components/TodoList";
+import AddTodoForm from "./components/AddTodoForm";
 import { useState } from "react";
 import { useEffect } from "react";
-import style from "./TodoForm.module.css";
+import style from "./components/TodoForm.module.css";
+import PropTypes from "prop-types";
 
 const App = () => {
   // const savedList = JSON.parse(localStorage.getItem("savedTodoList"));
