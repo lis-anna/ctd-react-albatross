@@ -16,11 +16,28 @@ body {
   color: teal;
   text-align: center;
 }
-.ToDoFormContainer {
-  display: inline-block;
-}
+
 /*Submit button style*/
 .submitButton {
   background-color: mediumseagreen;
   font-family: "Comic Sans MS", sans-serif;
+  border: none;
+  height: 38px;
+  width: 7em;
+  padding: 0 12px 0 px 8px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+input[type="text"] {
+  border-radius: 5px;
+  border: 1px solid teal;
+  width: 60%;
+  height: 2.5em;
+  margin: 10px 10px 10px 5px;
+}
+input:focus {
+  background-color: rgba(188, 218, 213, 0.7);
+  /* background-color: transparent;*/
+  border: 1px solid teal;
 }
