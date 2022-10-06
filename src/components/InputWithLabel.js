@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-
+//import style from "./TodoForm.module.css";
 const InputWithLabel = (props) => {
   const inputRef = React.useRef();
   useEffect(() => {
@@ -10,6 +10,7 @@ const InputWithLabel = (props) => {
   }, []);
   return (
     <>
+      {" "}
       <label htmlFor="todoTitle">{props.children}</label>
       <input
         ref={inputRef}
