@@ -31,15 +31,7 @@
 .btn_part {
   margin-right: 5px;
 }
-.ItemsList {
-}
-.link:hover {
-  background-color: salmon;
-  padding: 7px 10px 7px 0px;
 
-  opacity: 70%;
-  border-radius: 5px;
-}
 .checkboxItem {
   width: 20px;
   height: 20px;
@@ -58,4 +50,17 @@
 [type="checkbox"]:checked + label {
   text-decoration: line-through;
   color: dimgrey;
+}
+.checkboxLabel {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.link:hover {
+  background-color: salmon;
+  padding: 7px 10px 7px 0px;
+
+  opacity: 70%;
+  border-radius: 5px;
 }

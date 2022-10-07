@@ -6,16 +6,17 @@ const TodoListItem = ({ todo, onRemoveTodo }) => {
       <li className={style.ListItem}>
         <span>
           <a className={style.link}>
-            {" "}
-            <input
-              className={style.checkboxItem}
-              type="checkbox"
-              title="checkboxItem"
-            ></input>
-            <label htmlFor="checkboxItem">{todo.fields.Title}</label>
+            <span className={style.checkboxLabel}>
+              <input
+                className={style.checkboxItem}
+                type="checkbox"
+                title="checkboxItem"
+              ></input>
+              <label htmlFor="checkboxItem">{todo.fields.Title}</label>
+            </span>
           </a>
         </span>
-
+        <span>{todo.fields.Priority}</span>
         <span>
           <button
             className={style.removeButton}

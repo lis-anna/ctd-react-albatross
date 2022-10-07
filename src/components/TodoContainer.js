@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
+import SortingSection from "./SortingSection";
 import { useState } from "react";
 import { useEffect } from "react";
 import style from "./TodoForm.module.css";
@@ -25,7 +26,7 @@ const TodoContainer = ({ tableName }) => {
     )
       .then((response) => response.json())
       .then((result) => {
-        result.records.sort(sortRecords);
+        result.records.sort(sortObjects);
         //  console.log(result.records);
         setTodoList(result.records);
         setIsLoading(false);
@@ -75,13 +76,83 @@ const TodoContainer = ({ tableName }) => {
   function addTodo(newTodo) {
     setTodoList([...todoList, newTodo]);
   }
-  function sortRecords(objectA, objectB) {
+
+  function sortObjects(objectA, objectB) {
     let sorted;
-    if (objectA.fields.Title < objectB.fields) sorted = 1;
-    if (objectA.fields === objectB.fields) sorted = 0;
-    if (objectA.fields > objectB.fields) sorted = -1;
+    if (
+      objectA.fields.Title.toString().toLowerCase() <
+      objectB.fields.Title.toString().toLowerCase()
+    )
+      sorted = -1;
+    if (
+      objectA.fields.Title.toString().toLowerCase() ===
+      objectB.fields.Title.toString().toLowerCase()
+    )
+      sorted = 0;
+    if (
+      objectA.fields.Title.toString().toLowerCase() >
+      objectB.fields.Title.toString().toLowerCase()
+    )
+      sorted = 1;
 
     return sorted;
+  }
+
+  function sortPrio(objectA, objectB, prio) {
+    let sorted;
+    if (
+      objectA.fields.Priority.toString().toLowerCase() <
+      objectB.fields.Priority.toString().toLowerCase()
+    )
+      sorted = -1;
+    if (
+      objectA.fields.Priority.toString().toLowerCase() ===
+      objectB.fields.Priority.toString().toLowerCase()
+    )
+      sorted = 0;
+    if (
+      objectA.fields.Priority.toString().toLowerCase() >
+      objectB.fields.Priority.toString().toLowerCase()
+    )
+      sorted = 1;
+
+    return sorted;
+  }
+
+  function sortRecords(sortingOption) {
+    //get records from local storage
+    //sort ABC
+    //sort by creation time
+    //filter only High prio
+    let sortedList = [];
+    const unsortedList = JSON.parse(localStorage.getItem("savedTodoList"));
+    switch (sortingOption) {
+      case "Title":
+        sortedList = unsortedList.sort(sortObjects);
+        break;
+      case "createdTime":
+        sortedList = unsortedList.sort(
+          (a, b) =>
+            new Date(...a.createdTime.split("/")) -
+            new Date(...b.createdTime.split("/"))
+        );
+        break;
+      case "oldest":
+        sortedList = unsortedList.sort(
+          (a, b) =>
+            new Date(...a.createdTime.split("/").reverse()) -
+            new Date(...b.createdTime.split("/").reverse())
+        );
+        break;
+
+      case "Priotity":
+        sortedList = unsortedList.sort(sortPrio);
+        break;
+      default:
+        console.log("sorting problem");
+    }
+
+    setTodoList(sortedList);
   }
 
   function removeTodo(id) {
@@ -109,6 +180,7 @@ const TodoContainer = ({ tableName }) => {
     <>
       <h1 className={style.title}>Keep your {tableName} todos here!</h1>
       <AddTodoForm className={style.submitForm} onAddTodo={addTodo} />
+      <SortingSection onChangeSorting={sortRecords} />
       <p>{isLoading ? "Loading..." : ""} </p>
       <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
     </>

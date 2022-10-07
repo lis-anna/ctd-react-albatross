@@ -1,21 +1,6 @@
 import TodoListItem from "./TodoListItem";
 import PropTypes from "prop-types";
 
-/*const todoListData = [
-  {
-    id: 1,
-    title: "Read the book",
-  },
-  {
-    id: 2,
-    title: "Go for a walk with the baby",
-  },
-  {
-    id: 3,
-    title: "Send B & R order back",
-  },
-];
-*/
 const TodoList = ({ todoList, onRemoveTodo }) => {
   // console.log(Object.entries(todoList));
 

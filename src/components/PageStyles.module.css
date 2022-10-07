@@ -47,3 +47,16 @@
   color: teal;
   font-size: 0.9em;
 }
+
+.sortingList {
+  border-radius: 5px;
+  border: 1px solid teal;
+  width: 30%;
+  height: 2.5em;
+  margin: 0px 10px 0px 10px;
+}
+.sortingSection {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
