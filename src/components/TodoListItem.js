@@ -16,6 +16,7 @@ const TodoListItem = ({ todo, onRemoveTodo }) => {
             </span>
           </a>
         </span>
+        <span></span>
         <span>{todo.fields.Priority}</span>
         <span>
           <button

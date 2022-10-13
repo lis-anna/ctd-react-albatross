@@ -133,15 +133,15 @@ const TodoContainer = ({ tableName }) => {
       case "createdTime":
         sortedList = unsortedList.sort(
           (a, b) =>
-            new Date(...a.createdTime.split("/")) -
-            new Date(...b.createdTime.split("/"))
+            new Date(...b.createdTime.split("/")) -
+            new Date(...a.createdTime.split("/"))
         );
         break;
       case "oldest":
         sortedList = unsortedList.sort(
           (a, b) =>
-            new Date(...a.createdTime.split("/").reverse()) -
-            new Date(...b.createdTime.split("/").reverse())
+            new Date(...a.createdTime.split("/")) -
+            new Date(...b.createdTime.split("/"))
         );
         break;
 
