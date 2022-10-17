@@ -7,7 +7,7 @@ const options = [
   { label: "Alphabetically", value: "Title" },
   { label: "Newest first", value: "createdTime" },
   { label: "Oldest first", value: "oldest" },
-  { label: "High priority first", value: "Priotity" },
+  { label: "High prio first", value: "Priotity" },
 ];
 
 function SortingSection({ onChangeSorting, todo }) {
